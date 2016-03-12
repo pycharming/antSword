@@ -7,7 +7,7 @@
 > 中国蚁剑采用了[Electron](http://electron.atom.io/)作为外壳，`ES6`作为前端代码编写语言，搭配`Babel`&&`Webpack`进行组件化构建编译，外加`iconv-lite`编码解码模块以及`superagent`数据发送处理模块还有`nedb`数据存储模块，组成了这个年轻而又充满活力的新一代大杀器。
 
 这里附上一个简单的开发思维导图，让大家了解此蚁剑是如何工作的：
-[思维导图](screenshots/gliffy.png)
+![思维导图](screenshots/gliffy.png)
 
 如图所示，中国蚁剑推崇模块化的开发思想，遵循着**开源，就要开得漂亮**的原则，致力于为不同层次的人群提供最简单易懂、方便直接的代码展示及其修改说明，努力让大家可以一起为这个项目贡献出的力所能及的点点滴滴，让这款工具真正能让大家用得顺心、舒适，让它能为大家施展出最人性化最适合你的能力。
 
@@ -51,10 +51,10 @@ $ npm start
 ### 应用截图
 > 如果在没开始之前瞧瞧这款工具都能干些什么，那么，就瞅瞅这几张截图提前了解吧！
 
-[数据配置管理](screenshots/win-shellmanager.png)
-[虚拟终端](screenshots/linux-terminal.png)
-[文件管理](screenshots/osx-filemanager.png)
-[数据库管理](screenshots/osx-database.png)
+![数据配置管理](screenshots/win-shellmanager.png)
+![虚拟终端](screenshots/linux-terminal.png)
+![文件管理](screenshots/osx-filemanager.png)
+![数据库管理](screenshots/osx-database.png)
 
 ## 开发进度
 **本项目起始于2015年底的一个小想法：**
