@@ -1,0 +1,24 @@
+html, body, #container, #loading {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#loading {
+  top: 0;
+  z-index: 999;
+  position: fixed;
+  background-color: #FFF;
+  text-align: center;
+  background-image: url(../imgs/load.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/*sidebar.bubble*/
+.dhxsidebar_bubble {
+  width: auto !important;
+  padding: 0 5px;
+  background-color: #666 !important;
+}
