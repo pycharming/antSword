@@ -31,7 +31,7 @@ $ npm install
 > 安装`electron-prebuilt`模块过程中会自动下载`electron`程序，由于网络原因下载速度可能较慢，此时不要终止结束安装，如若不小心在没下载完成之前`Ctrl+C`结束掉了安装脚本，那只需要重新卸载此模块在此安装即可。
 > 如果遇到问题（国内速度慢）
 ```sh
-$ npm install -g cnpm —registry=https://registry.npm.taobao.org
+$ npm install -g cnpm -—registry=https://registry.npm.taobao.org
 $ cnpm install electron-prebuilt@0.36.11
 $ npm install 
 ```
