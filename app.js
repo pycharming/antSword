@@ -29,12 +29,35 @@ app
     });
     mainWindow.loadURL(`file:\/\/${__dirname}/views/index.html`);
 
+    // 是否重新加载刷新UI
+    // 获取初始化窗口大小
+    let winSize = mainWindow.getSize();
+    const reloadUI = () => {
+      // 判断调整大小是否已经超过界限
+      // 判断标准：取调整后的长(宽)与之前的长(宽)绝对值，>= 10就提示调整，最后保存调整后的长宽值
+      let _winSize = mainWindow.getSize();
+      if (Math.abs(_winSize[0] - winSize[0]) < 10 && Math.abs(_winSize[1] - winSize[1]) < 10) {
+        return;
+      };
+      winSize = _winSize;
+      mainWindow.webContents.executeJavaScript(`
+        layer.confirm(
+          '窗口已经调整，是否重启应用刷新UI？',
+          {
+            title: '重启应用',
+            btn: ['好的','不必']
+          },
+          location.reload.bind(location)
+        );
+      `);
+    }
     mainWindow
       .on('closed', () => { mainWindow = null })
-      .on('maximize', mainWindow.webContents.reload)
-      .on('unmaximize', mainWindow.webContents.reload)
-      .on('enter-full-screen', mainWindow.webContents.reload)
-      .on('leave-full-screen', mainWindow.webContents.reload)
+      .on('resize', reloadUI)
+      .on('maximize', reloadUI)
+      .on('unmaximize', reloadUI)
+      .on('enter-full-screen', reloadUI)
+      .on('leave-full-screen', reloadUI);
 
     // 打开调试控制台
     // mainWindow.webContents.openDevTools();
