@@ -28,7 +28,7 @@ antSword['core'] = {};
 
 // 加载显示语言
 let _lang = localStorage.getItem('language') || navigator.language;
-_lang = ['en', 'zh', 'jp'].indexOf(_lang) === -1 ? 'en' : _lang;
+_lang = ['en', 'zh'].indexOf(_lang) === -1 ? 'en' : _lang;
 antSword['language'] = require(`./language/${_lang}`);
 
 antSword['ipcRenderer'] = ipcRenderer;
