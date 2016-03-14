@@ -413,10 +413,10 @@ class Files {
         fsize: parseInt(file['size']),
         data: [
           self.fileIcon(file['name']),
-          file['name'].replace(/\/$/, ''),
-          file['time'],
-          self.fileSize(parseInt(file['size'])),
-          file['attr']
+          antSword.noxss(file['name'].replace(/\/$/, '')),
+          antSword.noxss(file['time']),
+          antSword.noxss(self.fileSize(parseInt(file['size']))),
+          antSword.noxss(file['attr'])
         ]
       });
       _id ++;
