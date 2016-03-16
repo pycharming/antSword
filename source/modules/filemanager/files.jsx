@@ -228,7 +228,7 @@ class Files {
       let _Clipboard_num = 0;
       for (let c in self.Clipboard) {
         _Clipboard.push({
-          text: c,
+          text: antSword.noxss(c),
           icon: 'fa fa-' + (c.endsWith('/') ? 'folder-o' : 'file-o'),
           action: ( (source, name) => {
             return () => {
