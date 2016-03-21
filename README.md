@@ -3,6 +3,9 @@
 
 **中国蚁剑是一款开源的跨平台网站管理工具，它主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员。任何人不得将其用于非法用途以及盈利等目的，否则后果自行承担！**
 
+[![node](https://img.shields.io/badge/node-4.0+-green.svg?style=flat-square)](https://nodejs.org/en/download/)
+[![release](https://img.shields.io/badge/release-v1.0.0-blue.svg?style=flat-square)](https://github.com/antoor/antSword/releases/tag/1.0.0)
+
 ## 设计思想
 > 中国蚁剑采用了[Electron](http://electron.atom.io/)作为外壳，`ES6`作为前端代码编写语言，搭配`Babel`&&`Webpack`进行组件化构建编译，外加`iconv-lite`编码解码模块以及`superagent`数据发送处理模块还有`nedb`数据存储模块，组成了这个年轻而又充满活力的新一代大杀器。
 
