@@ -63,7 +63,8 @@ module.exports = {
       default: 'Default',
       toolbar: {
         add: 'Add',
-        del: 'Del'
+        del: 'Del',
+        rename: 'Rename'
       },
       add: {
         title: 'Add category'
@@ -73,6 +74,13 @@ module.exports = {
         confirm: 'Are you sure to delete this category?',
         success: (category) => antSword.noxss(`Delete category(${category}) success!`),
         error: (category, err) => antSword.noxss(`Delete category(${category}failed!<br/>${err}`)
+      },
+      rename: {
+        title: 'Rename category',
+        disable: 'Prohibited category name!',
+        exists: 'This category name already exists!',
+        success: 'Successful rename!',
+        error: 'Rename category failed!'
       }
     },
     list: {

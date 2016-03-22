@@ -19,6 +19,8 @@ class Category {
     toolbar.loadStruct([
       { id: 'add', type: 'button', text: `<i class="fa fa-plus-circle"></i> ${LANG['category']['toolbar']['add']}` },
       { type: 'separator' },
+      { id: 'rename', type: 'button', text: `<i class="fa fa-font"></i> ${LANG['category']['toolbar']['rename']}`, disabled: true },
+      { type: 'separator' },
       { id: 'del', type: 'button', text: `<i class="fa fa-trash"></i> ${LANG['category']['toolbar']['del']}`, disabled: true }
     ]);
     // toolbar点击
@@ -32,6 +34,47 @@ class Category {
           }, (value, index, ele) => {
             layer.close(index);
             sidebar.callEvent('onSelect', [value]);
+          });
+          break;
+        case 'rename':
+          // 重命名分类
+          const _category = sidebar.getActiveItem();
+          layer.prompt({
+            title: `<i class="fa fa-font"></i> ${LANG['category']['rename']['title']}`,
+            value: _category
+          }, (value, index, ele) => {
+            // 禁止的分类名
+            if (value === 'default') {
+              return toastr.warning(LANG['category']['rename']['disable'], LANG_T['warning']);
+            };
+            // 判断分类是否存在
+            if (sidebar.items(value)) {
+              return toastr.warning(LANG['category']['rename']['exists'], LANG_T['warning']);
+            };
+            layer.close(index);
+            // 更新数据库
+            const ret = antSword['ipcRenderer'].sendSync('shell-renameCategory', {
+              oldName: _category,
+              newName: value
+            });
+            if (typeof ret === 'number') {
+              // 更新成功
+              toastr.success(LANG['category']['rename']['success'], LANG_T['success']);
+              // 删除旧分类
+              sidebar.items(_category).remove();
+              // 添加新分类
+              sidebar.addItem({
+                id: value,
+                bubble: ret,
+                text: `<i class="fa fa-folder-o"></i> ${value}`
+              });
+              // 跳转分类
+              setTimeout(() => {
+                sidebar.items(value).setActive();
+              }, 233);
+            }else{
+              toastr.error(LANG['category']['rename']['error'], LANG_T['error']);
+            }
           });
           break;
         case 'del':
@@ -77,6 +120,7 @@ class Category {
     sidebar.attachEvent('onSelect', (id) => {
       // 更改删除按钮状态
       toolbar[(id === 'default') ? 'disableItem' : 'enableItem']('del');
+      toolbar[(id === 'default') ? 'disableItem' : 'enableItem']('rename');
       manager.loadData({
         category: id
       });

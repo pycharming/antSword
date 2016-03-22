@@ -64,7 +64,8 @@ module.exports = {
       default: '默认分类',
       toolbar: {
         add: '添加',
-        del: '删除'
+        del: '删除',
+        rename: '重命名'
       },
       add: {
         title: '添加分类'
@@ -74,6 +75,13 @@ module.exports = {
         confirm: '确定删除此分类吗？（数据将清空）',
         success: (category) => antSword.noxss(`成功删除分类（${category}）！`),
         error: (category, err) => antSword.noxss(`删除分类（${category}）失败！<br/>${err}`)
+      },
+      rename: {
+        title: '重命名分类',
+        disable: '禁止的分类名称！',
+        exists: '此分类名已经存在！',
+        success: '重命名分类成功！',
+        error: '重命名分类失败！'
       }
     },
     list: {

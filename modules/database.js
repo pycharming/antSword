@@ -155,6 +155,22 @@ class Database {
           event.returnValue = err || num;
         })
       })
+      // 重命名分类
+      // {oldName, newName}
+      .on('shell-renameCategory', (event, arg) => {
+        logger.warn('shell-renameCategory', arg);
+        this.cursor.update({
+          category: arg['oldName']
+        }, {
+          $set: {
+            category: arg['newName']
+          }
+        }, {
+          multi: true
+        }, (err, num) => {
+          event.returnValue = err || num;
+        })
+      })
       // 移动数据
       .on('shell-move', (event, arg) => {
         logger.info('shell-move', arg);
