@@ -434,7 +434,7 @@ module.exports = {
       success: 'Successfully connect to the proxy server',
       error: 'Failed to connect to the proxy server'
     }
-  }
+  },
   plugin: {
     error: (err) => antSword.noxss(`Load plugin center failed!<br/>${err}`)
   }
