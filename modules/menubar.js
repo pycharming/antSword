@@ -97,14 +97,14 @@ class Menubar {
         ]
       }, {
         // 调试
-        label: '调试',
+        label: LANG['debug']['title'],
         submenu: [
           {
-            label: '重启应用',
+            label: LANG['debug']['restart'],
             accelerator: 'Shift+CmdOrCtrl+R',
             click: this.mainWindow.webContents.reload.bind(this.mainWindow.webContents)
           }, {
-            label: '开发者工具',
+            label: LANG['debug']['devtools'],
             accelerator: 'Alt+CmdOrCtrl+J',
             click: this.mainWindow.webContents.toggleDevTools.bind(this.mainWindow.webContents)
           }

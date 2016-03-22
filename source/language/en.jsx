@@ -40,6 +40,11 @@ module.exports = {
       next: 'Next window',
       prev: 'Prev window',
       close: 'Close window'
+    },
+    debug: {
+      title: 'Debug',
+      restart: 'Restart APP',
+      devtools: 'Developer Tools'
     }
   },
   shellmanager: {

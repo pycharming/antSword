@@ -41,6 +41,11 @@ module.exports = {
       next: '下个窗口',
       prev: '上个窗口',
       close: '关闭窗口'
+    },
+    debug: {
+      title: '调试',
+      restart: '重启应用',
+      devtools: '开发者工具'
     }
   },
   shellmanager: {
