@@ -16,6 +16,7 @@ module.exports = {
       plugin: '插件中心',
       settings: '系统设置',
       language: '语言设置',
+      aproxy: '代理设置',
       update: '检查更新',
       quit: '退出程序'
     },

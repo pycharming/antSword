@@ -1,6 +1,6 @@
 {
   "name": "antsword",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "中国蚁剑是一款跨平台的开源网站管理工具",
   "main": "app.js",
   "dependencies": {
@@ -30,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/antoor/antSword/issues"
   },
-  "homepage": "https://github.com/antoor/antSword"
+  "homepage": "http://uyu.us"
 }

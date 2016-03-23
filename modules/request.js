@@ -17,6 +17,8 @@ class Request {
 
   constructor(electron) {
     // 监听请求
+    const userAgent = 'antSword/1.1';
+    const timeout = 5000;
     const ipcMain = electron.ipcMain;
 
     // 代理测试
@@ -26,19 +28,19 @@ class Request {
       logger.debug("[aProxy] Test Proxy - " + _aproxyuri + " - Connect to " + opts['url']);
       require('superagent-proxy')(superagent);
       _superagent
-      .get(opts['url'])
-      .proxy(_aproxyuri)
-      .timeout(5000)
-      .end((err, ret) => {
-        if (err) {
-          logger.debug("[aProxy] Test Error");
-          return event.sender.send('aproxytest-error', err);
-        }else{
-          logger.debug("[aProxy] Test Success");
-          return event.sender.send('aproxytest-success', ret);
-        }
-      });
-
+        .get(opts['url'])
+        .set('User-Agent', userAgent)
+        .proxy(_aproxyuri)
+        .timeout(timeout)
+        .end((err, ret) => {
+          if (err) {
+            logger.debug("[aProxy] Test Error");
+            return event.sender.send('aproxytest-error', err);
+          }else{
+            logger.debug("[aProxy] Test Success");
+            return event.sender.send('aproxytest-success', ret);
+          }
+        });
     });
     // 加载代理设置
     ipcMain.on('aproxy', (event, opts) => {
@@ -59,10 +61,10 @@ class Request {
       logger.debug(opts['url'] + '\n', opts['data']);
       superagent
         .post(opts['url'])
-        .set('User-Agent', 'antSword/1.0')
+        .set('User-Agent', userAgent)
         .proxy(aproxyuri)
         .type('form')
-        .timeout(5000)
+        .timeout(timeout)
         .send(opts['data'])
         .parse((res, callback) => {
           this.parse(opts['tag_s'], opts['tag_e'], (chunk) => {

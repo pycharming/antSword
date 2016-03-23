@@ -11,7 +11,7 @@ class Settings {
 
   constructor() {
     antSword['menubar'].reg('settings', this::this.open);
-    ['about', 'update', 'language'].map((_) => {
+    ['about', 'update', 'language', 'aproxy'].map((_) => {
       antSword['menubar'].reg(`settings-${_}`, this.setActive.bind(this, _));
     });
   }

@@ -15,6 +15,7 @@ module.exports = {
       plugin: 'Plugin center',
       settings: 'System setting',
       language: 'Language setting',
+      aproxy: 'Proxy setting',
       update: 'Check update',
       quit: 'Quit'
     },
@@ -404,6 +405,39 @@ module.exports = {
       title: 'Check update',
       toolbar: {
         check: 'Check'
+      }
+    },
+    aproxy: {
+      title: 'Proxy setting',
+      toolbar: {
+        save: 'Save',
+        test: 'Test connect'
+      },
+      form: {
+        label: 'Configure proxy for access to the Internet',
+        mode:{
+          noproxy: 'Do not use agent',
+          manualproxy: 'Manually set the proxy'
+        },
+        proxy: {
+          protocol: 'Agency agreement',
+          server: 'Proxy server',
+          port: 'Port',
+          username: 'AuthUser',
+          password: 'Password',
+          authtip: 'If there is no authentication if'
+        }
+      },
+      success: 'Save proxy settings successfully!',
+      error: 'Failed to save the proxy settings!',
+      confirm: {
+        content: 'Restart the application to take effect, whether to restart?',
+        title: 'Change proxy settings'
+      },
+      prompt:{
+        title: 'Enter the Test-URL',
+        success: 'Connect to proxy server successfully',
+        error: 'Failed to connect to the proxy server'
       }
     }
   },
