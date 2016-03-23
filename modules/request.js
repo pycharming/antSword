@@ -12,7 +12,6 @@ const logger = log4js.getLogger('Request');
 
 var aproxymode = "noproxy";
 var aproxyuri = "";
-var aproxyauth = "";
 
 class Request {
 
@@ -24,18 +23,11 @@ class Request {
     ipcMain.on('aproxytest', (event, opts) => {
       var _superagent = require('superagent');
       var _aproxyuri = opts['aproxyuri'];
-      var _aproxyauth = opts['aproxyauth'] || "";
       logger.debug("[aProxy] Test Proxy - " + _aproxyuri + " - Connect to " + opts['url']);
       require('superagent-proxy')(superagent);
-      if (!_aproxyauth) {
-        _superagent.Request.prototype.auth=function(arg) {
-            return this;
-        };
-      };
       _superagent
       .get(opts['url'])
       .proxy(_aproxyuri)
-      .auth(_aproxyauth)
       .timeout(5000)
       .end((err, ret) => {
         if (err) {
@@ -52,22 +44,13 @@ class Request {
     ipcMain.on('aproxy', (event, opts) => {
       aproxymode = opts['aproxymode'];
       aproxyuri = opts['aproxyuri'];
-      aproxyauth = opts['aproxyauth'];
       logger.debug("[aProxy] Set Proxy Mode - " + (aproxymode == "manualproxy" ? aproxyuri : " noproxy"));
       if (aproxymode == "noproxy") {
         superagent.Request.prototype.proxy=function(arg) {
           return this;
         };
-        superagent.Request.prototype.auth=function(arg) {
-          return this;
-        };
       }else{
         require('superagent-proxy')(superagent);
-        if (!aproxyauth) {
-          superagent.Request.prototype.auth=function(arg) {
-              return this;
-          };
-        };
       };
     });
     // 监听请求
@@ -78,7 +61,6 @@ class Request {
         .post(opts['url'])
         .set('User-Agent', 'antSword/1.0')
         .proxy(aproxyuri)
-        .auth(aproxyauth)
         .type('form')
         .timeout(5000)
         .send(opts['data'])

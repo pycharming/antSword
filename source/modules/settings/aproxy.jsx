@@ -41,7 +41,7 @@ class AProxy {
           { type: 'combo',label: LANG['form']['proxy']['protocol'],readonly: true, name: 'protocol', options:[
             { text: 'HTTP', value: 'http', selected: aproxyprotocol === 'http' },
             { text: 'HTTPS', value: 'https', selected: aproxyprotocol === 'https' },
-            { text: 'SOCKS5', value: 'socks5', selected: aproxyprotocol === 'socks5' },
+            { text: 'SOCKS5', value: 'socks', selected: aproxyprotocol === 'socks' },
             { text: 'SOCKS4', value: 'socks4', selected: aproxyprotocol === 'socks4' },
           ]},
           { type: 'input', label: LANG['form']['proxy']['server'], name: 'server', required: true, validate:"NotEmpty", value: aproxyserver},
@@ -99,13 +99,14 @@ class AProxy {
               var loadindex = layer.load(2, {time: 6*1000});
               var _formvals = form.getValues();
               var _server = _formvals['server'].replace(/.+:\/\//, '').replace(/:.+/, '');
-              var _aproxyuri = _formvals['protocol'] + '://' + _server + ':' + _formvals['port'];
               var _aproxyauth = "";
               if (_formvals['username'] == "" || _formvals['password'] == "" || _formvals['username'] == null || _formvals['password'] == null) {
                 _aproxyauth = "";
               }else{
                 _aproxyauth = _formvals['username'] + ":" + _formvals['password'];
               }
+              var _aproxyuri = _formvals['protocol'] + '://' + _aproxyauth + '@' +_server + ':' + _formvals['port'];
+
               antSword['ipcRenderer']
               .on('aproxytest-error', (event, err) => {
                 layer.close(loadindex);
@@ -117,8 +118,7 @@ class AProxy {
               })
               .send('aproxytest',{
                 url: testurl || 'http://uyu.us',
-                aproxyuri: _aproxyuri,
-                aproxyauth: _aproxyauth
+                aproxyuri: _aproxyuri
               });
             });
           }

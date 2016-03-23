@@ -41,17 +41,17 @@ var _aproxyusername = localStorage.getItem('aproxyusername');
 var _aproxypassword = localStorage.getItem('aproxypassword');
 
 antSword['aproxymode'] = _aproxymode;
-antSword['aproxyuri'] = _aproxyprotocol + "://" + _aproxyserver + ":" + _aproxyport;
+
 if (_aproxyusername == "" || _aproxyusername == null || _aproxypassword == "" || _aproxypassword == null) {
   antSword['aproxyauth'] = "";
 }else{
   antSword['aproxyauth'] = _aproxyusername + ":" + _aproxypassword;
 }
+antSword['aproxyuri'] = _aproxyprotocol + "://" + antSword['aproxyauth']+ "@" + _aproxyserver + ":" + _aproxyport;
 
 ipcRenderer.send('aproxy', {
   aproxymode: antSword['aproxymode'],
-  aproxyuri: antSword['aproxyuri'],
-  aproxyauth: antSword['aproxyauth']
+  aproxyuri: antSword['aproxyuri']
 });
 
 antSword['ipcRenderer'] = ipcRenderer;
