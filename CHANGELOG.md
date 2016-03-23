@@ -1,6 +1,6 @@
 # 更新日志
 > 有空会补补BUG、添添新功能。    
-> 同时也欢迎大家的参与！
+> 同时也欢迎大家的参与！感谢各位朋友的支持！ .TAT.
 
 ## 2016/03
 
@@ -13,14 +13,17 @@
 ### /21
   1. 优化UI组建自适应，在调整窗口大小的时候不刷新就能调整UI尺寸
 
+### /18
+  1. 修复数据库XSS安全隐患以及特殊符号处理 // 感谢[@peablog](https://github.com/peablog)
+
 ### /15
-  1. 修复了部分XSS遗留问题（主要在语言模板以及文件管理上还有虚拟终端等，其他地方可能还存在
+  1. 修复了部分XSS遗留问题（主要在语言模板以及文件管理上还有虚拟终端等，其他地方可能还存在 // 感谢[@loveshell](https://github.com/loveshell)
 
 ### /14
   1. 修复文件管理中过滤不当引发的xss安全问题
   2. 增加窗口调整大小刷新UI之前弹框提醒用户选择是否刷新
   3. 删除无用语言包（jp）
-  4. 更新支持PHP7
+  4. 更新支持PHP7 // 感谢[@Lupino](https://github.com/Lupino)
     1. 删除`core/php/index.jsx`中的`@set_magic_quotes_runtime(0);`
     2. 升级`core/php/template/database/mysql.jsx`中的`mysql`为`mysqli`
 
