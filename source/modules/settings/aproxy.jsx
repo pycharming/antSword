@@ -31,7 +31,7 @@ class AProxy {
 
     // 表单
     const form = cell.attachForm([
-      { type: 'settings', position: 'label-left', labelWidth: 150, inputWidth: 100 },
+      { type: 'settings', position: 'label-left', labelWidth: 150, inputWidth: 200 },
       { type: 'block', inputWidth: 'auto', offsetTop: 12, list: [
         { type: 'label', label: LANG['form']['label'] },
 

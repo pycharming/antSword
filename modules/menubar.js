@@ -125,6 +125,10 @@ class Menubar {
             accelerator: 'Shift+CmdOrCtrl+L',
             click: event.sender.send.bind(event.sender, 'menubar', 'settings-language')
           }, {
+            label: LANG['main']['aproxy'],
+            accelerator: 'Shift+CmdOrCtrl+A',
+            click: event.sender.send.bind(event.sender, 'menubar', 'settings-aproxy')
+          }, {
             label: LANG['main']['update'],
             accelerator: 'Shift+CmdOrCtrl+U',
             click: event.sender.send.bind(event.sender, 'menubar', 'settings-update')
