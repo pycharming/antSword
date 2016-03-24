@@ -350,8 +350,10 @@ class Files {
     //支持编辑文件(php,js,txt..)则启动编辑器，如果是二进制或压缩等文件(exe,dll,zip,rar..)则下载)
     grid.attachEvent('onRowDblClicked', (id, lid, event) => {
       const fname = grid.getRowAttribute(id, 'fname');
+      const fsize = grid.getRowAttribute(id, 'fsize');
       if (!fname.endsWith('/')) {
-        // grid.callEvent('onRightClick', [id, lid, event]);
+        // 双击编辑size < 100kb 文件
+        fsize <= 100 * 1024 ? manager.editFile(fname) : null;
       }else{
         self.gotoPath(fname);
       }
