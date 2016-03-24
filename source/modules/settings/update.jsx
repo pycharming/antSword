@@ -22,11 +22,11 @@ class Update {
     // status
     cell.attachHTMLString(`
 
-      当前版本：1.0.0
+      当前版本：${antSword['package']['version']}
       <br/>
       暂不支持在线更新！
       <br />
-      请访问<strong style="color:#0099FF">https://github.com/antoor/antSword</strong>获取最新版本！
+      请访问<strong style="color:#0099FF">${antSword['package']['repository']['url']}</strong>获取最新版本！
     `);
   }
 }

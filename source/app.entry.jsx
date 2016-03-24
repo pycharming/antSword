@@ -7,6 +7,7 @@
 
 'use strict';
 
+const fs = global.require('fs');
 const electron = global.require('electron');
 const remote = electron.remote;
 const ipcRenderer = electron.ipcRenderer;
@@ -57,6 +58,7 @@ ipcRenderer.send('aproxy', {
 antSword['ipcRenderer'] = ipcRenderer;
 antSword['CacheManager'] = CacheManager;
 antSword['menubar'] = new Menubar();
+antSword['package'] = JSON.parse(fs.readFileSync('./package.json'));
 
 // 加载模块列表
 // antSword['tabbar'] = new dhtmlXTabBar(document.getElementById('container'));
